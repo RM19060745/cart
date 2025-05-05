@@ -1,0 +1,23 @@
+<script>
+// Define the product to add — customize this per product
+const productToAdd = {
+  id: "P001",
+  name: "Premium Dates 500g",
+  price: 8.99,
+  quantity: 1
+};
+
+// Load existing cart or create a new one
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Check if product already in cart
+const existing = cart.find(item => item.id === productToAdd.id);
+if (existing) {
+  existing.quantity += productToAdd.quantity;
+} else {
+  cart.push(productToAdd);
+}
+
+// Save updated cart
+localStorage.setItem('cart', JSON.stringify(cart));
+</script>
